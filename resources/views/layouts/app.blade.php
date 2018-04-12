@@ -40,16 +40,24 @@
     <th class="text-center">ID</th>
     <th class="text-center">Holiday Name</th>
     <th class="text-center">Holiday Details</th>
+    <th class="text-center">Holiday Image Url</th>
+    <th class="text-center">Holiday Date</th>
+    <th class="text-center">Holiday Month</th>
+    <th class="text-center">Holiday Year</th>
     <th class="text-center">Action</th>
   </tr>
   </thead>
   <tbody>
   
-  	@foreach($holidays as $holiday)
+  	@foreach($showData as $holiday)
   	<tr>
 		<td class="text-center">{{ $holiday->id }}</td>
 		<td class="text-center">{{ $holiday->holiday_name }}</td>
-		<td class="text-center">{{ $holiday->holiday_details }}</td>
+		<td class="text-center">{{ $holiday->holiday_details }}</td> 
+		<td class="text-center">{{ $holiday->holiday_img_url }}</td>
+		<td class="text-center">{{ $holiday->holiday_date }}</td>
+		<td class="text-center">{{ $holiday->months_name }}</td>
+		<td class="text-center">{{ $holiday->holiday_year }}</td>
 		<td class="text-center">
 			<a href="{{route('edit',$holiday->id)}}" class="btn btn-raised btn-sm btn-primary">Edit</a> | 
 			<form method="POST" style="display: none;" id="delete-form-{{$holiday->id}}" action="{{route('delete',$holiday->id)}}">
@@ -63,20 +71,26 @@
 			} else{event.preventDefault();}" class="btn btn-raised btn-sm btn-danger">Delete</a></td>
 	</tr>
   	@endforeach
-    
+
+
+  	
   </tbody>
 
   
   </table>
 
+
+    
+
 	<div class="text-center">
-            {{ $holidays->links() }}
+            {{-- {{ $showData->links() }} --}}
         </div>
 	</div>
 
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
 	<script type="text/javascript">
